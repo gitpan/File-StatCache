@@ -1,0 +1,8 @@
+Changes
+lib/File/StatCache.pm
+Makefile.PL
+MANIFEST
+t/01require.t
+t/02get_stat.t
+t/03stat.t
+t/04cache.t

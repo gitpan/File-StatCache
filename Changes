@@ -1,0 +1,9 @@
+Revision history for File-StatCache
+
+0.02  Sun Jul 16 22:11:57 2006  <leonerd@leonerd.org.uk>
+
+  - Added Changes, MANIFEST
+
+  - Updated code style using perltidy
+
+  - Updated POD style to be more like other CPAN modules
