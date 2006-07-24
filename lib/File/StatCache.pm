@@ -19,7 +19,7 @@ package File::StatCache;
 use strict;
 
 my $VERSION;
-$VERSION = "0.02";
+$VERSION = "0.03";
 
 use Exporter;
 our @ISA       = qw( Exporter );
@@ -56,13 +56,11 @@ my %stat_cache;
 # Make $STATTIMEOUT externally visible, so other modules change it
 our $STATTIMEOUT = 10;
 
-=head2 FUNCTIONS
-
-=over 4
+=head1 FUNCTIONS
 
 =cut
 
-=item $stats = get_stat( $path [, $now ] )
+=head2 $stats = get_stat( $path [, $now ] )
 
 This function wraps a call to C<File::stat::stat()>, and caches the result. If
 the requested file was C<stat()>ed within C<$STATTIMEOUT> seconds, it will not
@@ -153,9 +151,9 @@ sub _stat($)
     }
 }
 
-=item $stats = stat( $path )
+=head2 $stats = stat( $path )
 
-=item @stats = stat( $path )
+=head2 @stats = stat( $path )
 
 This is a drop-in replacement for either the perl core C<stat()> function or
 the C<File::stat::stat> function, depending whether it is called in list or
@@ -182,7 +180,7 @@ no warnings;
 *stat = \&_stat;
 use warnings;
 
-=item get_item_mtime( $path [, $now ] )
+=head2 get_item_mtime( $path [, $now ] )
 
 This function is equivalent to
 
@@ -214,8 +212,6 @@ sub get_item_mtime($;$) {
 1;
 
 __END__
-
-=back
 
 =head1 LIMITATIONS
 

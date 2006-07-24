@@ -21,11 +21,30 @@ use Test::More tests => 28;
 
 use File::StatCache qw( get_stat );
 
-# Might need to adjust this for non-POSIX platforms like Win32
-my $test_node = "/dev/null";
+sub touch($)
+{
+   my ( $path ) = @_;
 
-my @fs  = stat( $test_node );
-my $fsc = File::StatCache::get_stat( $test_node );
+   local *F;
+   open( F, ">", $path ) or die "Cannot open '$path' in append mode - $!";
+   print F "Content\n";
+   close( F );
+}
+
+my $touchfile = "./test-file-statcache.touch";
+
+END {
+   unlink( $touchfile );
+}
+
+if( -f $touchfile ) {
+   die "Testing file $touchfile already exists";
+}
+
+touch( $touchfile );
+
+my @fs  = stat( $touchfile );
+my $fsc = File::StatCache::get_stat( $touchfile );
 
 ok( defined $fsc, 'defined $fsc' );
 
@@ -43,7 +62,7 @@ is( $fsc->ctime,   $fs[10], 'ctime'   );
 is( $fsc->blksize, $fs[11], 'blksize' );
 is( $fsc->blocks,  $fs[12], 'blocks'  );
 
-my @fsc = File::StatCache::stat( $test_node );
+my @fsc = File::StatCache::stat( $touchfile );
 
 is( scalar @fsc, 13, 'scalar @fsc' );
 

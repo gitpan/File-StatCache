@@ -17,7 +17,7 @@
 
 use strict;
 
-use Test::More tests => 3;
+use Test::More tests => 5;
 
 use File::StatCache qw( stat );
 
@@ -60,3 +60,14 @@ sleep( $wait );
 
 @stats = stat( $touchfile );
 is_deeply( \@stats, \@touchfilestats, "Later cached stat() call" );
+
+unlink( $touchfile );
+
+# We hope the cache doesn't time out yet - we want a cache hit
+@stats = stat( $touchfile );
+is_deeply( \@stats, \@touchfilestats, "Cache hit after unlink()" );
+
+sleep( $wait );
+
+@stats = stat( $touchfile );
+is( scalar @stats, 0, "Later stat() call after unlink()" );

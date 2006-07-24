@@ -22,11 +22,30 @@ use File::stat qw();
 
 use File::StatCache qw( get_stat );
 
-# Might need to adjust this for non-POSIX platforms like Win32
-my $test_node = "/dev/null";
+sub touch($)
+{
+   my ( $path ) = @_;
 
-my $fs  = File::stat::stat( $test_node );
-my $fsc = File::StatCache::get_stat( $test_node );
+   local *F;
+   open( F, ">", $path ) or die "Cannot open '$path' in append mode - $!";
+   print F "Content\n";
+   close( F );
+}
+
+my $touchfile = "./test-file-statcache.touch";
+
+END {
+   unlink( $touchfile );
+}
+
+if( -f $touchfile ) {
+   die "Testing file $touchfile already exists";
+}
+
+touch( $touchfile );
+
+my $fs  = File::stat::stat( $touchfile );
+my $fsc = File::StatCache::get_stat( $touchfile );
 
 ok( defined $fsc, 'defined $fsc' );
 
