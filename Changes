@@ -1,5 +1,11 @@
 Revision history for File-StatCache
 
+0.04  Tue Jan 02 16:10:42 2007  <leonerd@leonerd.org.uk>
+
+  - Relicenced as perl (GPL+Artistic) rather than GPL
+
+  - Updated to use Module::Build rather than ExtUtils::MakeMaker
+
 0.03  Mon Jul 24 22:09:53 2006  <leonerd@leonerd.org.uk>
 
   - Use touchfile in all test files rather than /dev/null

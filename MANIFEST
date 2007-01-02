@@ -1,7 +1,8 @@
+Build.PL
 Changes
 lib/File/StatCache.pm
-Makefile.PL
-MANIFEST
+MANIFEST			This list of files
+META.yml
 t/01require.t
 t/02get_stat.t
 t/03stat.t
