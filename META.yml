@@ -1,12 +1,14 @@
 ---
 name: File-StatCache
-version: 0.04
+version: 0.05
 author:
   - 'Paul Evans E<lt>leonerd@leonerd.org.ukE<gt>'
 abstract: a caching wrapper around the C<stat()> function
 license: perl
+build_requires:
+  Test::More: 0
 provides:
   File::StatCache:
     file: lib/File/StatCache.pm
-    version: 0.04
+    version: 0.05
 generated_by: Module::Build version 0.26

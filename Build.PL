@@ -7,7 +7,11 @@ my $build = Module::Build->new
   (
    module_name => 'File::StatCache',
    dist_version_from => 'lib/File/StatCache.pm',
+   build_requires => {
+                        'Test::More' => 0,
+                     },
    license => 'perl',
+   create_makefile_pl => 'traditional',
   );
   
 $build->create_build_script;
