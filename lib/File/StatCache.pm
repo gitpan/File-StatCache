@@ -1,13 +1,14 @@
 #  You may distribute under the terms of either the GNU General Public License
 #  or the Artistic License (the same terms as Perl itself)
 #
-#  (C) Paul Evans, 2006,2007 -- leonerd@leonerd.org.uk
+#  (C) Paul Evans, 2006,2007,2009 -- leonerd@leonerd.org.uk
 
 package File::StatCache;
 
 use strict;
+use warnings;
 
-our $VERSION = "0.05";
+our $VERSION = '0.06';
 
 use Exporter;
 our @ISA       = qw( Exporter );
@@ -232,6 +233,6 @@ this particular failure.
 
 =head1 AUTHOR
 
-Paul Evans E<lt>leonerd@leonerd.org.ukE<gt>
+Paul Evans <leonerd@leonerd.org.uk>
 
 =cut
